@@ -9,7 +9,6 @@ import { DashboardComponent } from './hero/dashboard.component';
 	directives: [ROUTER_DIRECTIVES, HeroesComponent, HeroDetailComponent, DashboardComponent],
 	providers: [ROUTER_PROVIDERS, HeroService],
 	templateUrl: 'app/templates/app-component.html',
-	styleUrls: ['app/styles/app.component.css']
 })
 @RouteConfig([{
 	  path: '/dashboard',

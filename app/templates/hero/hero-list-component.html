@@ -1,7 +1,10 @@
-<ul class="heroes">
-	<li *ngFor="let hero of heroes"
+<ul class="list-group">
+	<li class="list-group-item" *ngFor="let hero of heroes"
 		[class.selected]="hero === selectedHero"
 		(click)="select(hero)">
-		<span class="badge">{{hero.id}}</span> {{hero.name}}
+		<div class="row-content">
+			<h4 class="list-group-item-heading">{{hero.name}}</h4>
+			<p class="list-group-item-text">Id {{hero.id}}</p>
+		</div>
 	</li>
 </ul>
