@@ -1,4 +1,6 @@
 <h1>{{title}}</h1>
-<h2>My Heroes</h2>
-<hero-list (onSelectHero)="onSelectHero($event)"></hero-list>
-<hero-detail [hero]="selectedHero"></hero-detail>
+<nav>
+	<a [routerLink]="['Dashboard']">Dashboard</a>
+	<a [routerLink]="['Heroes']">Heroes</a>
+</nav>
+<router-outlet></router-outlet>

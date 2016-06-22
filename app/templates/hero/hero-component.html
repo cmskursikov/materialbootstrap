@@ -1,0 +1,9 @@
+<h1>{{title}}</h1>
+<h2>My Heroes</h2>
+<hero-list (onSelectHero)="onSelectHero($event)"></hero-list>
+<div *ngIf="selectedHero">
+  <h2>
+    {{selectedHero.name | uppercase}} is my hero
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>

@@ -1,16 +1,31 @@
 import { Component } from '@angular/core';
-import { Hero } from 'app/services/hero';
-import { HeroDetailComponent } from 'app/components/hero/hero-detail.component';
-import { HeroListComponent } from 'app/components/hero/hero-list.component';
+import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
+import { HeroService } from './../services/hero.service';
+import { HeroesComponent } from './hero/heroes.component';
+import { HeroDetailComponent } from './hero/hero-detail.component';
+import { DashboardComponent } from './hero/dashboard.component';
 @Component({
 	selector: 'my-app',
-	directives: [HeroDetailComponent, HeroListComponent],
+	directives: [ROUTER_DIRECTIVES, HeroesComponent, HeroDetailComponent, DashboardComponent],
+	providers: [ROUTER_PROVIDERS, HeroService],
 	templateUrl: 'app/templates/app-component.html',
+	styleUrls: ['app/styles/app.component.css']
 })
+@RouteConfig([{
+	  path: '/dashboard',
+	  name: 'Dashboard',
+	  component: DashboardComponent,
+	  useAsDefault: true
+	}, {
+		path: '/heroes',
+		name: 'Heroes',
+		component: HeroesComponent
+	}, {
+		path: '/heroes/:id',
+		name: 'HeroDetail',
+		component: HeroDetailComponent
+	}]
+)
 export class AppComponent {
-	public selectedHero: Hero;
-	constructor() {	}
-	onSelectHero(hero: Hero) {
-		this.selectedHero = hero;
-	}
+	title = 'Tour of Heroes';
 }
