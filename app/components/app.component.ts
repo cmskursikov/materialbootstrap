@@ -4,6 +4,12 @@ import { HeroService } from './../services/hero.service';
 import { HeroesComponent } from './hero/heroes.component';
 import { HeroDetailComponent } from './hero/hero-detail.component';
 import { DashboardComponent } from './hero/dashboard.component';
+import { AuthComponent } from './cafepulse/auth.component';
+import { AddEmployeeComponent } from './cafepulse/add-employee.component';
+import { ProfileComponent } from './cafepulse/profile.component';
+import { OpenCloseSessionComponent } from './cafepulse/open-close-session.component';
+import { CashboxComponent } from './cafepulse/cashbox.component';
+
 @Component({
 	selector: 'my-app',
 	directives: [ROUTER_DIRECTIVES, HeroesComponent, HeroDetailComponent, DashboardComponent],
@@ -23,6 +29,26 @@ import { DashboardComponent } from './hero/dashboard.component';
 		path: '/heroes/:id',
 		name: 'HeroDetail',
 		component: HeroDetailComponent
+	}, {
+		path: '/Auth',
+		name: 'Auth',
+		component: AuthComponent
+	}, {
+		path: '/AddEmployee',
+		name: 'AddEmployee',
+		component: AddEmployeeComponent
+	}, {
+		path: '/UpdateEmployeeInfo',
+		name: 'UpdateEmployeeInfo',
+		component: ProfileComponent
+	}, {
+		path: '/OpenCloseSession',
+		name: 'OpenCloseSession',
+		component: OpenCloseSessionComponent
+	}, {
+		path: '/Cashbox',
+		name: 'Cashbox',
+		component: CashboxComponent
 	}]
 )
 export class AppComponent {

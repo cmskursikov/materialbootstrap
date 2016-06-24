@@ -1,0 +1,169 @@
+<div id="CreateCashboxWriteOffPopup" class="modal fade" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">Касса</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-horizontal">
+					<div class="form-group">
+						<label for="Sum" class="col-sm-3 control-label">Сумма</label>
+						<div class="col-sm-9">
+							<input type="number" class="form-control" id="Sum" placeholder="38000" data-bind="textInput: newCashboxWriteOff.sum">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-3 col-sm-9">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" data-bind="checked: newCashboxWriteOff.directionIn"><span class="checkbox-material"><span class="check"></span></span> Внесение
+								</label>
+							</div>
+						</div>
+					</div>
+					<!-- ko if: !newCashboxWriteOff.directionIn() -->
+					<div class="form-group">
+						<label for="Password" class="col-sm-3 control-label">Пароль</label>
+						<div class="col-sm-9">
+							<input type="password" class="form-control" id="Password" data-bind="textInput: newCashboxWriteOff.password">
+						</div>
+					</div>
+					<!-- /ko -->
+					<div class="form-group">
+						<label for="Comment" class="col-sm-3 control-label">Комментарий</label>
+						<div class="col-sm-9">
+							<textarea class="form-control" id="Comment" placeholder="Взял и положил в карман." rows="5" data-bind="textInput: newCashboxWriteOff.comment"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+				<button type="button" class="btn btn-primary" data-bind="click: $root.createCashboxWriteOff">Оформить</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="well col-xs-12">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-xs-12">
+						Остаток в кассе <span data-bind="text: sum">13393</span>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-xs-12">
+						<input type="button" class="btn btn-raised btn-primary" data-toggle="modal" data-target="#CreateCashboxWriteOffPopup" value="Внести/изъять деньги">
+					</div>
+				</div>
+			</div>
+		</div>
+		<table class="table table-striped">
+			<thead>
+			<tr>
+				<th>Кто</th>
+				<th>Что сделал</th>
+				<th>Сколько</th>
+				<th>Откуда</th>
+				<th>Когда</th>
+				<th>С комментарием</th>
+			</tr>
+			</thead>
+			<tbody data-bind="foreach: { data: $root.writeOffs, as: 'writeOff' }">
+			<tr>
+				<td data-bind="text: writeOff.userName">max_reistlin@mail.ru</td>
+				<td data-bind="text: writeOff.directionIn ? 'Внес' : 'Изъял'">Внес</td>
+				<td data-bind="text: writeOff.sum + 'р'">20р</td>
+				<td data-bind="text: writeOff.storeName">Кофейня 38</td>
+				<td data-bind="dateTimeWithFormat: writeOff.createDate">24-06-2016 14:11</td>
+				<td data-bind="text: writeOff.comment">пил сок</td>
+			</tr>
+			
+			<tr>
+				<td data-bind="text: writeOff.userName">max_reistlin@mail.ru</td>
+				<td data-bind="text: writeOff.directionIn ? 'Внес' : 'Изъял'">Внес</td>
+				<td data-bind="text: writeOff.sum + 'р'">200р</td>
+				<td data-bind="text: writeOff.storeName">Кофейня 38</td>
+				<td data-bind="dateTimeWithFormat: writeOff.createDate">23-06-2016 19:20</td>
+				<td data-bind="text: writeOff.comment">Алёна покушала</td>
+			</tr>
+			
+			<tr>
+				<td data-bind="text: writeOff.userName">Donnikova666@gmail.com</td>
+				<td data-bind="text: writeOff.directionIn ? 'Внес' : 'Изъял'">Изъял</td>
+				<td data-bind="text: writeOff.sum + 'р'">2000р</td>
+				<td data-bind="text: writeOff.storeName">Кофейня 38</td>
+				<td data-bind="dateTimeWithFormat: writeOff.createDate">23-06-2016 17:17</td>
+				<td data-bind="text: writeOff.comment">Закупки</td>
+			</tr>
+			
+			<tr>
+				<td data-bind="text: writeOff.userName">Donnikova666@gmail.com</td>
+				<td data-bind="text: writeOff.directionIn ? 'Внес' : 'Изъял'">Изъял</td>
+				<td data-bind="text: writeOff.sum + 'р'">100р</td>
+				<td data-bind="text: writeOff.storeName">Кофейня 38</td>
+				<td data-bind="dateTimeWithFormat: writeOff.createDate">23-06-2016 17:14</td>
+				<td data-bind="text: writeOff.comment">Вода.</td>
+			</tr>
+			
+			<tr>
+				<td data-bind="text: writeOff.userName">Donnikova666@gmail.com</td>
+				<td data-bind="text: writeOff.directionIn ? 'Внес' : 'Изъял'">Изъял</td>
+				<td data-bind="text: writeOff.sum + 'р'">100р</td>
+				<td data-bind="text: writeOff.storeName">Кофейня 38</td>
+				<td data-bind="dateTimeWithFormat: writeOff.createDate">23-06-2016 17:12</td>
+				<td data-bind="text: writeOff.comment">Вода</td>
+			</tr>
+			
+			<tr>
+				<td data-bind="text: writeOff.userName">Donnikova666@gmail.com</td>
+				<td data-bind="text: writeOff.directionIn ? 'Внес' : 'Изъял'">Изъял</td>
+				<td data-bind="text: writeOff.sum + 'р'">125р</td>
+				<td data-bind="text: writeOff.storeName">Кофейня 38</td>
+				<td data-bind="dateTimeWithFormat: writeOff.createDate">23-06-2016 17:08</td>
+				<td data-bind="text: writeOff.comment">Овощи</td>
+			</tr>
+			
+			<tr>
+				<td data-bind="text: writeOff.userName">Donnikova666@gmail.com</td>
+				<td data-bind="text: writeOff.directionIn ? 'Внес' : 'Изъял'">Изъял</td>
+				<td data-bind="text: writeOff.sum + 'р'">2300р</td>
+				<td data-bind="text: writeOff.storeName">Кофейня 38</td>
+				<td data-bind="dateTimeWithFormat: writeOff.createDate">23-06-2016 17:07</td>
+				<td data-bind="text: writeOff.comment">Закупка Дима</td>
+			</tr>
+			
+			<tr>
+				<td data-bind="text: writeOff.userName">alyonatwix@gmail.com</td>
+				<td data-bind="text: writeOff.directionIn ? 'Внес' : 'Изъял'">Внес</td>
+				<td data-bind="text: writeOff.sum + 'р'">50р</td>
+				<td data-bind="text: writeOff.storeName">Кофейня 38</td>
+				<td data-bind="dateTimeWithFormat: writeOff.createDate">22-06-2016 21:23</td>
+				<td data-bind="text: writeOff.comment">Макс яблочный сок пил</td>
+			</tr>
+			
+			<tr>
+				<td data-bind="text: writeOff.userName">Donnikova666@gmail.com</td>
+				<td data-bind="text: writeOff.directionIn ? 'Внес' : 'Изъял'">Изъял</td>
+				<td data-bind="text: writeOff.sum + 'р'">1011р</td>
+				<td data-bind="text: writeOff.storeName">Кофейня 38</td>
+				<td data-bind="dateTimeWithFormat: writeOff.createDate">22-06-2016 20:21</td>
+				<td data-bind="text: writeOff.comment">Мясо</td>
+			</tr>
+			
+			<tr>
+				<td data-bind="text: writeOff.userName">Donnikova666@gmail.com</td>
+				<td data-bind="text: writeOff.directionIn ? 'Внес' : 'Изъял'">Изъял</td>
+				<td data-bind="text: writeOff.sum + 'р'">255р</td>
+				<td data-bind="text: writeOff.storeName">Кофейня 38</td>
+				<td data-bind="dateTimeWithFormat: writeOff.createDate">22-06-2016 20:20</td>
+				<td data-bind="text: writeOff.comment">Бананы, сыр, яйца</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
